@@ -100,7 +100,7 @@ a:active {
 
 .detail .born,
 .search-page .record .born {
-    background: url(/css/icons/born.svg) no-repeat;
+    background: url(icons/born.svg) no-repeat;
 }
 
 .search-page .record .born {
@@ -112,7 +112,7 @@ a:active {
 
 .detail .died,
 .search-page .record .died {
-    background: url(/css/icons/died.svg) no-repeat;
+    background: url(icons/died.svg) no-repeat;
 }
 
 .search-page .record .died {
@@ -187,13 +187,13 @@ a:active {
 }
 
 .footer .prev {
-    background-image: url(/css/icons/prev.svg);
+    background-image: url(icons/prev.svg);
     background-repeat: no-repeat;
     margin-left: 24px;
 }
 
 .footer .next {
-    background-image: url(/css/icons/next.svg);
+    background-image: url(icons/next.svg);
     background-repeat: no-repeat;
     background-position: right;
 }
@@ -208,30 +208,30 @@ a:active {
 }
 
 .footer .prev:active {
-    background-image: url(/css/icons/prev_active.svg);
+    background-image: url(icons/prev_active.svg);
 }
 
 .footer .next:active {
-    background-image: url(/css/icons/next_active.svg);
+    background-image: url(icons/next_active.svg);
 }
 
 .footer .index:active {
-    background-image: url(/css/icons/back_active.svg);
+    background-image: url(icons/back_active.svg);
 }
 
 .footer .search:active {
-    background-image: url(/css/icons/search_active.svg);
+    background-image: url(icons/search_active.svg);
 }
 
 .footer .index {
-    background-image: url(/css/icons/back.svg);
+    background-image: url(icons/back.svg);
     background-repeat: no-repeat;
     padding-left: 32px;
     padding-right: 8px;
 }
 
 .footer .search {
-    background-image: url(/css/icons/search.svg);
+    background-image: url(icons/search.svg);
     background-repeat: no-repeat;
     padding-left: 32px;
     padding-right: 8px;
@@ -259,7 +259,7 @@ a:active {
     color: #47525E;
     font-family: 'Fira Mono', monospace;
     padding: 0.3em;
-    background: url(/css/icons/search.svg) no-repeat scroll right;
+    background: url(icons/search.svg) no-repeat scroll right;
     border: 1px solid #47525E;
 }
 

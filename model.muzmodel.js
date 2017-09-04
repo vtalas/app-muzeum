@@ -1,7 +1,7 @@
 import Backbone from 'exoskeleton';
 
 let PeopleList = Backbone.Collection.extend({
-    url: '/assets/data.json',
+    url: 'assets/data.json',
     parse: function(data) {
         return data.records;
     }
