@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "start": "http-server -p 88",
+    "test": "babel-node ./test/index.test.js | faucet"
+  },
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "exoskeleton": "^0.7.0",
+    "http-server": "^0.10.0",
+    "jquery": "^3.2.1",
+    "name-generator": "^0.1.1"
+  },
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "lorem-ipsum": "latest",
+    "random-date-generator": "latest",
+    "random-name": "latest",
+    "tape": "^4.8.0"
+  }
+}
