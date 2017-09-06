@@ -7,6 +7,9 @@ const rl = readline.createInterface({
     input: stream,
 });
 
+const ROZENA = ', roz. ';
+const VL_JMENO = ', vl. jménem ';
+
 let res = [];
 let skiped = [];
 let i = 0;
@@ -19,8 +22,28 @@ let importDate = function(destination, line) {
     destination.died = parts[1];
 };
 
-rl.on('line', (line) => {
+let parseName = function(record, name) {
 
+    let parsedName = name;
+    let x;
+    if (name.includes(VL_JMENO)) {
+        x = name.split(VL_JMENO);
+        record.original_name = x[1];
+        parsedName = x[0];
+        console.log(parsedName, 'vl. jmenem: ', x[1]);
+    }
+
+    if (name.includes(ROZENA)) {
+        x = name.split(ROZENA);
+        record.maiden = x[1];
+        parsedName = x[0];
+        console.log(parsedName, 'rozena: ', x[1]);
+     }
+
+    record.name = parsedName;
+};
+
+rl.on('line', (line) => {
 
     let skip = line.length === 1 || line.length === 0;
     if (skip) {
@@ -51,12 +74,12 @@ rl.on('line', (line) => {
             record = {
                 id: 'id_s' + i++,
                 surname: parts[0],
-                name: parts.slice(1).join(' '),
                 text: ''
             };
+            parseName(record, parts.slice(1).join(' '));
             recordLine++;
         } else {
-            skiped.push('ssss  ' + line.substr(0, 100))
+            skiped.push('skipped line  >>' + line.substr(0, 100), '<<end')
         }
     } else {
         skiped.push('xxx', line.substr(0, 50));

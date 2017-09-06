@@ -83,19 +83,26 @@ a:active {
 }
 
 .detail h2 {
-    padding: 0 0 80px;
     margin: 0;
     font-family: 'Fira Mono', monospace;
-    font-size: 32px;
+    font-size: 64px;
 }
 
 .detail h3 {
+    padding: 0 0 80px;
+    margin: 0;
+    font-family: 'Fira Mono', monospace;
+    font-size:32px;
+    padding-top: 32px;
+}
+
+.detail h4 {
     font-weight: 100;
     padding: 0;
     margin: 0;
     color: #969FAA;
     font-family: 'Fira Mono', monospace;
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .detail .born,
