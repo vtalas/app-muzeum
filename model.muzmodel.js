@@ -36,10 +36,17 @@ export const MuzModel = Backbone.Model.extend({
     onReset() {
 
         this.recordsGrouped = this.records.groupBy((b) => {
-            return b.get('surname')[0];
+
+            let surname = b.get('surname');
+            if (surname.toLowerCase().startsWith('ch')) {
+                console.log("asdkjbaskjdksad");
+                return surname.substr(0, 2);
+            }
+            return surname[0];
         }, 'acs');
         let keys = Object.keys(this.recordsGrouped).sort((a, b) => a.localeCompare(b));
 
+        console.log(keys);
         this.sorted = [];
         keys.forEach(key => this.sorted = this.sorted.concat(this.recordsGrouped[key]));
     },

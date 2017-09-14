@@ -54,16 +54,31 @@ const SearchView = Backbone.View.extend({
 
     renderResult(item) {
 
+        let state = item.get('state');
         const result = $('<div/>', { class: 'record', id: item.get('id') });
 
         const el = $('<div/>', {
-            class: 'headlight',
+            class: 'head',
             text: `${item.get('name')} ${item.get('surname').toUpperCase()}`
         });
 
+        const stateEl = $('<span/>', { class: 'state' });
+        if (state === 2) {
+            stateEl.text('student | kantor');
+        } else if (state === 1) {
+            stateEl.text('kantor');
+        } else {
+            stateEl.text('student');
+        }
+        el.append(stateEl);
+
+        const teacher = state === 1 || state === 2;
+        if (teacher) {
+            el.css('font-weight', 'bold');
+        }
+
         result.append(el);
-        if (item.get('bi' +
-                'rth')) {
+        if (item.get('birth')) {
             result.append($('<div/>', { class: 'born' }).text(item.get('birth')))
         }
 

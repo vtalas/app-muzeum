@@ -47,7 +47,7 @@ a:active {
 
 .list .record {
     display: block;
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Sans', sans-serif;
     font-size: 32px;
     color: #47525E;
 }
@@ -77,22 +77,22 @@ a:active {
     text-align: left;
     padding: 0;
     margin: 0;
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Sans', sans-serif;
     font-size: 80px;
     width: 130%;
 }
 
 .detail h2 {
     margin: 0;
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Sans', sans-serif;
     font-size: 64px;
 }
 
 .detail h3 {
     padding: 0 0 80px;
     margin: 0;
-    font-family: 'Fira Mono', monospace;
-    font-size:32px;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 32px;
     padding-top: 32px;
 }
 
@@ -101,7 +101,7 @@ a:active {
     padding: 0;
     margin: 0;
     color: #969FAA;
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Sans', sans-serif;
     font-size: 28px;
 }
 
@@ -115,6 +115,7 @@ a:active {
     padding-left: 14px;
     background-size: 10px;
     background-position: left;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .detail .died,
@@ -127,6 +128,7 @@ a:active {
     padding-left: 14px;
     background-size: 10px;
     background-position: left;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .detail .born,
@@ -145,7 +147,7 @@ a:active {
     justify-content: space-between;
     font-size: 24px;
     text-transform: uppercase;
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Sans', sans-serif;
     color: #969FAA;
 
     position: fixed;
@@ -264,7 +266,7 @@ a:active {
     width: 100%;
     font-size: 40px;
     color: #47525E;
-    font-family: 'Fira Mono', monospace;
+    font-family: 'Fira Sans', sans-serif;
     padding: 0.3em;
     background: url(icons/search.svg) no-repeat scroll right;
     border: 1px solid #47525E;
@@ -280,7 +282,7 @@ a:active {
 }
 
 .search-page .record {
-    padding: 10px;
+    padding: 10px 10px 40px;
 }
 
 .search-page .record:hover {
@@ -291,8 +293,16 @@ a:active {
     background-color: #eeeeee;
 }
 
-.search-page .headlight {
-    font-family: 'Fira Mono', monospace;
+.search-page .head {
+    font-family: 'Fira Sans', sans-serif;
     font-size: 32px;
+    position: relative;
+}
+
+.search-page .state {
+    font-size: 24px;
+    font-weight: 300;
+    right: 0;
+    position: absolute;
 }
 

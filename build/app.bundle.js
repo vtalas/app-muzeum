@@ -13717,12 +13717,19 @@
 	        var _this = this;
 
 	        this.recordsGrouped = this.records.groupBy(function (b) {
-	            return b.get('surname')[0];
+
+	            var surname = b.get('surname');
+	            if (surname.toLowerCase().startsWith('ch')) {
+	                console.log("asdkjbaskjdksad");
+	                return surname.substr(0, 2);
+	            }
+	            return surname[0];
 	        }, 'acs');
 	        var keys = Object.keys(this.recordsGrouped).sort(function (a, b) {
 	            return a.localeCompare(b);
 	        });
 
+	        console.log(keys);
 	        this.sorted = [];
 	        keys.forEach(function (key) {
 	            return _this.sorted = _this.sorted.concat(_this.recordsGrouped[key]);
@@ -14036,7 +14043,14 @@
 	                x = column.clone();
 	            }
 
-	            this.recordElement.clone().attr('id', obj.get('id')).text(obj.get('surname') + ' ' + obj.get('name')).appendTo(x);
+	            var record = this.recordElement.clone();
+
+	            record.attr('id', obj.get('id')).text(obj.get('surname') + ' ' + obj.get('name')).appendTo(x);
+
+	            var teacher = obj.get('state') === 1 || obj.get('state') === 2;
+	            if (teacher) {
+	                record.css('font-weight', 'bold');
+	            }
 	        }
 
 	        batchContainer.append(x);
@@ -16217,15 +16231,31 @@
 	    },
 	    renderResult: function renderResult(item) {
 
+	        var state = item.get('state');
 	        var result = (0, _jquery2.default)('<div/>', { class: 'record', id: item.get('id') });
 
 	        var el = (0, _jquery2.default)('<div/>', {
-	            class: 'headlight',
+	            class: 'head',
 	            text: item.get('name') + ' ' + item.get('surname').toUpperCase()
 	        });
 
+	        var stateEl = (0, _jquery2.default)('<span/>', { class: 'state' });
+	        if (state === 2) {
+	            stateEl.text('student | kantor');
+	        } else if (state === 1) {
+	            stateEl.text('kantor');
+	        } else {
+	            stateEl.text('student');
+	        }
+	        el.append(stateEl);
+
+	        var teacher = state === 1 || state === 2;
+	        if (teacher) {
+	            el.css('font-weight', 'bold');
+	        }
+
 	        result.append(el);
-	        if (item.get('bi' + 'rth')) {
+	        if (item.get('birth')) {
 	            result.append((0, _jquery2.default)('<div/>', { class: 'born' }).text(item.get('birth')));
 	        }
 

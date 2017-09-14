@@ -72,11 +72,16 @@ const IndexView = Backbone.View.extend({
                 x = column.clone();
             }
 
-            this.recordElement
-                .clone()
-                .attr('id', obj.get('id'))
+            const record = this.recordElement.clone();
+
+            record.attr('id', obj.get('id'))
                 .text(`${obj.get('surname')} ${obj.get('name')}`)
                 .appendTo(x);
+
+            const teacher = obj.get('state') === 1 || obj.get('state') === 2;
+            if (teacher) {
+                record.css('font-weight', 'bold');
+            }
         }
 
         batchContainer.append(x);

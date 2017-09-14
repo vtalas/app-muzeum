@@ -38,9 +38,21 @@ let parseName = function(record, name) {
         record.maiden = x[1];
         parsedName = x[0];
         console.log(parsedName, 'rozena: ', x[1]);
-     }
+    }
 
     record.name = parsedName;
+};
+
+let parseState = function(record, str) {
+    if (str.includes('**')) {
+        record.state = 2;
+    } else if (str.includes('*')) {
+        record.state = 1;
+    } else {
+        record.state = 0;
+    }
+
+    return str.replace(/\*/g, '');
 };
 
 rl.on('line', (line) => {
@@ -71,12 +83,15 @@ rl.on('line', (line) => {
 
         if (parts[0] && parts[0][0].toLocaleUpperCase('cs') === parts[0][0]
             && parts[1] && parts[1][0].toLocaleUpperCase('cs') === parts[1][0]) {
-            record = {
-                id: 'id_s' + i++,
-                surname: parts[0],
-                text: ''
-            };
-            parseName(record, parts.slice(1).join(' '));
+
+            record = {};
+            let surname = parseState(record, parts[0]);
+            record.id = 'id_s' + i++;
+            record.surname = surname;
+            record.text = '';
+
+            let nameStr = parts.slice(1).join(' ');
+            parseName(record, nameStr);
             recordLine++;
         } else {
             skiped.push('skipped line  >>' + line.substr(0, 100), '<<end')
