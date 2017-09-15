@@ -9,6 +9,7 @@ textarea:focus, input:focus {
 }
 
 body {
+    background-color: #f7f9fa;
     overflow: hidden;
 }
 
@@ -111,7 +112,8 @@ a:active {
 }
 
 .search-page .record .born {
-    color: #969FAA;
+    color: #47525E;
+    font-size: 18px;
     padding-left: 14px;
     background-size: 10px;
     background-position: left;
@@ -124,7 +126,8 @@ a:active {
 }
 
 .search-page .record .died {
-    color: #969FAA;
+    color: #47525E;
+    font-size: 18px;
     padding-left: 14px;
     background-size: 10px;
     background-position: left;
@@ -144,8 +147,9 @@ a:active {
 }
 
 .footer {
+    border-top: 1px solid #969FAA;
     justify-content: space-between;
-    font-size: 24px;
+    font-size: 32px;
     text-transform: uppercase;
     font-family: 'Fira Sans', sans-serif;
     color: #969FAA;
@@ -185,14 +189,14 @@ a:active {
 .footer .prev,
 .footer .next {
     float: left;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
 }
 
 .footer .index,
 .footer .search {
     float: right;
-    margin-right: 24px;
+    margin-right: 32px;
 }
 
 .footer .prev {
@@ -235,14 +239,14 @@ a:active {
 .footer .index {
     background-image: url(icons/back.svg);
     background-repeat: no-repeat;
-    padding-left: 32px;
+    padding-left: 40px;
     padding-right: 8px;
 }
 
 .footer .search {
     background-image: url(icons/search.svg);
     background-repeat: no-repeat;
-    padding-left: 32px;
+    padding-left: 40px;
     padding-right: 8px;
 }
 
@@ -267,7 +271,7 @@ a:active {
     font-size: 40px;
     color: #47525E;
     font-family: 'Fira Sans', sans-serif;
-    padding: 0.3em;
+    padding: 0.3em 0.3em 0.3em 20px;
     background: url(icons/search.svg) no-repeat scroll right;
     border: 1px solid #47525E;
 }
@@ -282,7 +286,7 @@ a:active {
 }
 
 .search-page .record {
-    padding: 10px 10px 40px;
+    padding: 20px;
 }
 
 .search-page .record:hover {
@@ -300,7 +304,7 @@ a:active {
 }
 
 .search-page .state {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
     right: 0;
     position: absolute;

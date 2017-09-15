@@ -12,13 +12,11 @@ const DetailView = Backbone.View.extend({
 
         let m = this.model.getRecord(this.active);
 
-
         if (!m) {
             return this;
         }
 
         this.$el.append($('<h1/>').text(`${m.get('surname')} ${m.get('name')}`));
-        console.log(m.get('maiden'));
         if (m.get('maiden')) {
             this.$el.append($('<h2/>').text(`rozená ${m.get('maiden')}`));
         }

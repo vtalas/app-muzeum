@@ -8,10 +8,10 @@ let router = new MuzRouter({ model });
 model.records.fetch({
     reset: true,
     success: function(collection, data) {
-        console.log("data:", data, arguments);
+        // console.log("data:", data, arguments);
     },
     error: function() {
-        console.log("data:error", arguments);
+        // console.log("data:error", arguments);
     }
 });
 

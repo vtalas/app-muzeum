@@ -71,10 +71,10 @@
 	model.records.fetch({
 	    reset: true,
 	    success: function success(collection, data) {
-	        console.log("data:", data, arguments);
+	        // console.log("data:", data, arguments);
 	    },
 	    error: function error() {
-	        console.log("data:error", arguments);
+	        // console.log("data:error", arguments);
 	    }
 	});
 
@@ -13720,7 +13720,6 @@
 
 	            var surname = b.get('surname');
 	            if (surname.toLowerCase().startsWith('ch')) {
-	                console.log("asdkjbaskjdksad");
 	                return surname.substr(0, 2);
 	            }
 	            return surname[0];
@@ -13729,7 +13728,6 @@
 	            return a.localeCompare(b);
 	        });
 
-	        console.log(keys);
 	        this.sorted = [];
 	        keys.forEach(function (key) {
 	            return _this.sorted = _this.sorted.concat(_this.recordsGrouped[key]);
@@ -16116,7 +16114,6 @@
 	        }
 
 	        this.$el.append((0, _jquery2.default)('<h1/>').text(m.get('surname') + ' ' + m.get('name')));
-	        console.log(m.get('maiden'));
 	        if (m.get('maiden')) {
 	            this.$el.append((0, _jquery2.default)('<h2/>').text('rozen\xE1 ' + m.get('maiden')));
 	        }
