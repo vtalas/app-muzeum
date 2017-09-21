@@ -175,7 +175,8 @@ a:active {
 
 .list h1 {
     font-size: 72px;
-    font-family: 'PT Serif', serif;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 400;
     color: #47525E;
 }
 

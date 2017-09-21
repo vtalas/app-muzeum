@@ -64,9 +64,9 @@ const SearchView = Backbone.View.extend({
 
         const stateEl = $('<span/>', { class: 'state' });
         if (state === 2) {
-            stateEl.text('student | kantor');
+            stateEl.text('student | profesor');
         } else if (state === 1) {
-            stateEl.text('kantor');
+            stateEl.text('profesor');
         } else {
             stateEl.text('student');
         }
@@ -83,7 +83,7 @@ const SearchView = Backbone.View.extend({
         }
 
         if (item.get('died')) {
-            result.append($('<div/>', { class: 'born' }).text(item.get('died')))
+            result.append($('<div/>', { class: 'died' }).text(item.get('died')))
         }
 
         return result;

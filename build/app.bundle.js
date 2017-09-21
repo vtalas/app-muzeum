@@ -14045,10 +14045,10 @@
 
 	            record.attr('id', obj.get('id')).text(obj.get('surname') + ' ' + obj.get('name')).appendTo(x);
 
-	            var teacher = obj.get('state') === 1 || obj.get('state') === 2;
-	            if (teacher) {
-	                record.css('font-weight', 'bold');
-	            }
+	            // const teacher = obj.get('state') === 1 || obj.get('state') === 2;
+	            // if (teacher) {
+	            //     record.css('font-weight', 'bold');
+	            // }
 	        }
 
 	        batchContainer.append(x);
@@ -16238,9 +16238,9 @@
 
 	        var stateEl = (0, _jquery2.default)('<span/>', { class: 'state' });
 	        if (state === 2) {
-	            stateEl.text('student | kantor');
+	            stateEl.text('student | profesor');
 	        } else if (state === 1) {
-	            stateEl.text('kantor');
+	            stateEl.text('profesor');
 	        } else {
 	            stateEl.text('student');
 	        }
@@ -16257,7 +16257,7 @@
 	        }
 
 	        if (item.get('died')) {
-	            result.append((0, _jquery2.default)('<div/>', { class: 'born' }).text(item.get('died')));
+	            result.append((0, _jquery2.default)('<div/>', { class: 'died' }).text(item.get('died')));
 	        }
 
 	        return result;

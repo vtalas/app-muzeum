@@ -78,10 +78,10 @@ const IndexView = Backbone.View.extend({
                 .text(`${obj.get('surname')} ${obj.get('name')}`)
                 .appendTo(x);
 
-            const teacher = obj.get('state') === 1 || obj.get('state') === 2;
-            if (teacher) {
-                record.css('font-weight', 'bold');
-            }
+            // const teacher = obj.get('state') === 1 || obj.get('state') === 2;
+            // if (teacher) {
+            //     record.css('font-weight', 'bold');
+            // }
         }
 
         batchContainer.append(x);
