@@ -1,7 +1,6 @@
 import test from 'tape';
 import {MuzModel} from '../model.muzmodel';
 
-
 const prepareModel = function() {
 
     let model = new MuzModel();

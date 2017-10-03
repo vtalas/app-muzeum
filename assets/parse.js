@@ -123,7 +123,7 @@ rl.on('close', function() {
     }
 
     csvStream.end();
-    console.log(JSON.stringify(skiped));
+    console.log('skipped: ', JSON.stringify(skiped));
     // console.log((skiped));
 });
 
