@@ -7,6 +7,12 @@ let PeopleList = Backbone.Collection.extend({
     }
 });
 
+export const STATE = {
+    STUDENT: 0,
+    TEACHER: 1,
+    TEACHER_STUDENT: 2
+};
+
 export const MuzModel = Backbone.Model.extend({
 
     czechChars: {
@@ -27,15 +33,36 @@ export const MuzModel = Backbone.Model.extend({
     },
 
     initialize() {
+        this.set('stateFilter', {
+            teachers: true,
+            students: true
+        });
+
         this.sorted = [];
         this.records = new PeopleList();
         this.listenTo(this.records, 'all', this.trigger);
-        this.listenTo(this.records, 'reset', this.onReset)
+        this.listenTo(this.records, 'reset', this.sortAndGroup);
+        this.on('change:stateFilter', this.sortAndGroup);
     },
 
-    onReset() {
+    sortAndGroup: function() {
 
-        this.recordsGrouped = this.records.groupBy((b) => {
+        const x = this.records.filter(function(item) {
+            let stateFilter = this.get('stateFilter');
+            let state = item.get('state');
+
+            if (!stateFilter.students) {
+                return state === STATE.TEACHER;
+            }
+
+            if (!stateFilter.teachers) {
+                return state === STATE.STUDENT;
+            }
+
+            return true;
+        }.bind(this));
+
+        this.recordsGrouped = _.groupBy(x, (b) => {
 
             let surname = b.get('surname');
             if (surname.toLowerCase().startsWith('ch')) {
@@ -43,13 +70,15 @@ export const MuzModel = Backbone.Model.extend({
             }
             return surname[0];
         }, 'acs');
+
         let keys = Object.keys(this.recordsGrouped).sort((a, b) => a.localeCompare(b));
 
         this.sorted = [];
         keys.forEach(key => this.sorted = this.sorted.concat(this.recordsGrouped[key]));
+        this.trigger('groupedsorted');
     },
 
-    delocalization(str) {
+    _delocalization(str) {
         str = str || '';
         str = str.toLocaleLowerCase('cs');
 
@@ -63,15 +92,15 @@ export const MuzModel = Backbone.Model.extend({
     },
 
     filterRecords(str) {
-        const records = this.records;
-        const filter = this.delocalization(str);
+        const records = this.sorted;
+        const filter = this._delocalization(str);
 
         return records.filter(item => {
-            if (this.delocalization(item.get('surname')).includes(filter)) {
+            if (this._delocalization(item.get('surname')).includes(filter)) {
                 return true;
             }
 
-            return !!this.delocalization(item.get('name')).includes(filter);
+            return !!this._delocalization(item.get('name')).includes(filter);
         })
     },
 
@@ -97,15 +126,12 @@ export const MuzModel = Backbone.Model.extend({
     getRecordByIndex(index) {
 
         let i = index;
-
         if (index >= this.sorted.length) {
             i = 0;
         }
-
         if (index < 0) {
             i = this.sorted.length - 2;
         }
-
         return this.getRecord(this.sorted[i]);
     },
 

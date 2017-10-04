@@ -311,3 +311,23 @@ a:active {
     position: absolute;
 }
 
+.state-container {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.student:hover, .prof:hover {
+    cursor: pointer;
+}
+
+.student.inactive, .prof.inactive {
+    text-decoration: line-through;
+    text-decoration-color: red;
+    opacity: 0.5;
+
+}
+
+.prof {
+    margin-left: 50px;
+
+}

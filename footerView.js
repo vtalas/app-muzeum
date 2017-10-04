@@ -9,6 +9,8 @@ const FooterView = Backbone.View.extend({
         // 'click .close': 'onIndexClick',
         // 'touchstart .close': 'onIndexClick',
 
+        'click .student': 'onStudentClick',
+        'click .prof': 'onProfClick',
         'click .next': 'onNextClick',
         'click .prev': 'onPrevClick',
         'click .search': 'onSearchClick'
@@ -19,8 +21,13 @@ const FooterView = Backbone.View.extend({
 
         this.$prev = $('<a/>', { class: 'prev', text: '' }).appendTo(footer);
         this.$next = $('<a/>', { class: 'next', text: '' }).appendTo(footer);
+
         this.$index = $('<a/>', { class: 'index', text: 'rejstřík' }).appendTo(footer);
         this.$search = $('<a/>', { class: 'search', text: 'hledat' }).appendTo(footer);
+
+        const cont = $('<div/>', { class: 'state-container' }).appendTo(footer);
+        this.$pupil = $('<a/>', { class: 'student', text: 'studenti' }).appendTo(cont);
+        this.$teacher = $('<a/>', { class: 'prof', text: 'profesoři' }).appendTo(cont);
 
         this.$prev.css('visibility', 'hidden');
         this.$next.css('visibility', 'hidden');
@@ -30,10 +37,12 @@ const FooterView = Backbone.View.extend({
         return this;
     },
 
-    update(type, opt) {
+    update(opt) {
 
         opt = opt || {};
         this.active = opt.active;
+        const type = opt.type;
+        const stateFilter = opt.stateFilter;
 
         if (type === 'index') {
             this.$prev.css('visibility', 'hidden');
@@ -55,6 +64,11 @@ const FooterView = Backbone.View.extend({
             this.$search.css('visibility', 'hidden');
             this.$index.css('visibility', 'visible');
         }
+
+        if (stateFilter !== undefined) {
+            this.$teacher.toggleClass('inactive', !stateFilter.teachers);
+            this.$pupil.toggleClass('inactive', !stateFilter.students);
+        }
     },
 
     onSearchClick() {
@@ -71,6 +85,14 @@ const FooterView = Backbone.View.extend({
 
     onNextClick() {
         this.trigger('click:next', this.active);
+    },
+
+    onStudentClick() {
+        this.trigger('click:student', this.active);
+    },
+
+    onProfClick() {
+        this.trigger('click:prof', this.active);
     }
 });
 

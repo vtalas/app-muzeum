@@ -15,7 +15,7 @@ const IndexView = Backbone.View.extend({
 
     initialize() {
         this.$list = this.$('.list');
-        this.listenTo(this.model, 'reset', this.render);
+        this.listenTo(this.model, 'groupedsorted', this.render);
         this.$el.scroll(() => {
             if (this.visible) {
                 this.currentScroll = this.$el.scrollTop();

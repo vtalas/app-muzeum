@@ -10,6 +10,7 @@ const SearchView = Backbone.View.extend({
 
     initialize() {
         this.listenTo(this.model, 'change:filter', this.renderResults);
+        this.listenTo(this.model, 'change:stateFilter', this.renderResults);
     },
 
     render() {
@@ -54,7 +55,6 @@ const SearchView = Backbone.View.extend({
 
     renderResult(item) {
 
-        let state = item.get('state');
         const result = $('<div/>', { class: 'record', id: item.get('id') });
 
         const el = $('<div/>', {
@@ -62,6 +62,7 @@ const SearchView = Backbone.View.extend({
             text: `${item.get('name')} ${item.get('surname').toUpperCase()}`
         });
 
+        let state = item.get('state');
         const stateEl = $('<span/>', { class: 'state' });
         if (state === 2) {
             stateEl.text('student | profesor');
@@ -72,10 +73,11 @@ const SearchView = Backbone.View.extend({
         }
         el.append(stateEl);
 
-        const teacher = state === 1 || state === 2;
-        if (teacher) {
-            el.css('font-weight', 'bold');
-        }
+        // bold profersor
+        // const teacher = state === 1 || state === 2;
+        // if (teacher) {
+        //     el.css('font-weight', 'bold');
+        // }
 
         result.append(el);
         if (item.get('birth')) {

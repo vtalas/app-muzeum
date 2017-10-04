@@ -4,6 +4,7 @@ import FooterView from './footerView';
 import DetailView from './detailView';
 import SearchView from './search.view';
 import $ from 'jquery';
+import {MuzModel} from './model.muzmodel';
 
 const MuzRouter = Backbone.Router.extend({
     routes: {
@@ -49,18 +50,45 @@ const MuzRouter = Backbone.Router.extend({
 
     initFooterView() {
 
-        this.views.footer = new FooterView({ el: $('.footer'), model: this.model }).render();
-        this.listenTo(this.views.footer, 'click:search', () => this.navigate('search', { trigger: true }));
-        this.listenTo(this.views.footer, 'click:index', () => this.navigate('main', { trigger: true }));
-        this.listenTo(this.views.footer, 'click:prev', (currentId) => {
+        let footer = this.views.footer = new FooterView({ el: $('.footer') }).render();
+
+        this.listenTo(footer, 'click:search', () => this.navigate('search', { trigger: true }));
+        this.listenTo(footer, 'click:index', () => this.navigate('main', { trigger: true }));
+        this.listenTo(footer, 'click:prev', (currentId) => {
             const prev = this.model.getPrevious(currentId);
             this.navigate('user/' + prev.get('id'), { trigger: true })
         });
 
-        this.listenTo(this.views.footer, 'click:next', (currentId) => {
+        this.listenTo(footer, 'click:next', (currentId) => {
             const next = this.model.getNext(currentId);
             this.navigate('user/' + next.get('id'), { trigger: true })
         });
+
+        this.listenTo(footer, 'click:student', function() {
+            const stateFilter = _.clone(this.model.get('stateFilter'));
+            stateFilter.students = !stateFilter.students;
+
+            if (!stateFilter.students && !stateFilter.teachers) {
+                stateFilter.teachers = true;
+            }
+
+
+            console.log("asdkjbsakd", stateFilter);
+            this.model.set('stateFilter', stateFilter);
+            footer.update({ stateFilter })
+        });
+
+        this.listenTo(footer, 'click:prof', function() {
+            const stateFilter = _.clone(this.model.get('stateFilter'));
+            stateFilter.teachers = !stateFilter.teachers;
+
+            if (!stateFilter.students && !stateFilter.teachers) {
+                stateFilter.students = true;
+            }
+
+            this.model.set('stateFilter', stateFilter);
+            footer.update({ stateFilter })
+        })
     },
 
     initIndexView() {
@@ -80,7 +108,7 @@ const MuzRouter = Backbone.Router.extend({
         }
 
         views.index.show();
-        views.footer.update('index');
+        views.footer.update({ type: 'index', stateFilter: this.model.get('stateFilter') });
     },
 
     user(id) {
@@ -88,7 +116,7 @@ const MuzRouter = Backbone.Router.extend({
         let view = new DetailView({ model: this.model, active: id });
         this.dom.detail.show().html(view.el);
         view.render();
-        this.views.footer.update('detail', { active: id });
+        this.views.footer.update({ type: 'detail', active: id });
         this.dom.app.scrollTop(0);
     },
 
@@ -105,7 +133,7 @@ const MuzRouter = Backbone.Router.extend({
             })
         }
         views.search.show();
-        this.views.footer.update('search');
+        this.views.footer.update({ type: 'search' });
     }
 });
 

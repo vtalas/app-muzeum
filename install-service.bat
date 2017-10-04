@@ -1,0 +1,1 @@
+sc create sgodatabaze binpath="C:\Users\vladi\Projects\talas\vtalas-x\apps\muz\run.bat" start=auto
