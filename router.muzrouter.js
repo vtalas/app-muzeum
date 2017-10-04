@@ -72,8 +72,6 @@ const MuzRouter = Backbone.Router.extend({
                 stateFilter.teachers = true;
             }
 
-
-            console.log("asdkjbsakd", stateFilter);
             this.model.set('stateFilter', stateFilter);
             footer.update({ stateFilter })
         });
@@ -128,7 +126,6 @@ const MuzRouter = Backbone.Router.extend({
             views.search = view;
 
             this.listenTo(view, 'click:record', (id, evt) => {
-                console.log("id", id, 'user/' + id);
                 this.navigate('user/' + id, { trigger: true })
             })
         }

@@ -52,11 +52,11 @@ export const MuzModel = Backbone.Model.extend({
             let state = item.get('state');
 
             if (!stateFilter.students) {
-                return state === STATE.TEACHER;
+                return state === STATE.TEACHER || state === STATE.TEACHER_STUDENT;
             }
 
             if (!stateFilter.teachers) {
-                return state === STATE.STUDENT;
+                return state === STATE.STUDENT || state === STATE.TEACHER_STUDENT;
             }
 
             return true;

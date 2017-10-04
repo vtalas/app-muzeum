@@ -124,14 +124,5 @@ rl.on('close', function() {
 
     csvStream.end();
     console.log('skipped: ', JSON.stringify(skiped));
-    // console.log((skiped));
 });
 
-// rl.question('What do you think of Node.js? ', (answer) => {
-//     // TODO: Log the answer in a database
-//     console.log(`Thank you for your valuable feedback: ${answer}`);
-//
-//     console.log(rl);
-//
-//     rl.close();
-// });
