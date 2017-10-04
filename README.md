@@ -21,8 +21,8 @@ https://vtalas.github.io/app-muzeum/
 
 3. po naistalování závislostí spustit:
 
+`install.bat`
 `run.bat`   
 
+pro naistalovaní applikace jako služby spustit `install-service.bat`
 
-
-https://www.google.cz/imgres?imgurl=https://www.howtogeek.com/wp-content/uploads/2009/12/2pwr.png&imgrefurl=https://www.howtogeek.com/howto/7553/remove-shutdown-and-restart-buttons-in-windows-7/&h=325&w=580&tbnid=0GizMmjtyRzDqM:&tbnh=118&tbnw=211&usg=__39abO6omFlwX807rygv7UvLv6Z0=&vet=10ahUKEwio4tXE_9PWAhUDmbQKHblrC1IQ9QEIMTAA..i&docid=f0sd5ndHcmtmgM&sa=X&ved=0ahUKEwio4tXE_9PWAhUDmbQKHblrC1IQ9QEIMTAA
