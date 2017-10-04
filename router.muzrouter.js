@@ -4,7 +4,6 @@ import FooterView from './footerView';
 import DetailView from './detailView';
 import SearchView from './search.view';
 import $ from 'jquery';
-import {MuzModel} from './model.muzmodel';
 
 const MuzRouter = Backbone.Router.extend({
     routes: {

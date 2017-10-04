@@ -6,12 +6,17 @@ const DetailView = Backbone.View.extend({
     initialize(opt) {
         this.active = opt.active;
         this.listenTo(this.model, 'reset', this.render);
+        this.listenTo(this.model, 'change:stateFilter', function() {
+            this.active = this.model.sorted[0].id;
+            this.render();
+        });
     },
 
     render() {
 
         let m = this.model.getRecord(this.active);
 
+        this.$el.empty();
         if (!m) {
             return this;
         }
