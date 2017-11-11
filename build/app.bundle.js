@@ -17623,8 +17623,8 @@
 	    render: function render() {
 	        var footer = this.$el;
 
-	        this.$prev = (0, _jquery2.default)('<a/>', { class: 'prev', text: '' }).appendTo(footer);
-	        this.$next = (0, _jquery2.default)('<a/>', { class: 'next', text: '' }).appendTo(footer);
+	        this.$prev = (0, _jquery2.default)('<a/>', { class: 'prev', text: 'předchozí' }).appendTo(footer);
+	        this.$next = (0, _jquery2.default)('<a/>', { class: 'next', text: 'následující' }).appendTo(footer);
 
 	        this.$index = (0, _jquery2.default)('<a/>', { class: 'index', text: 'rejstřík' }).appendTo(footer);
 	        this.$search = (0, _jquery2.default)('<a/>', { class: 'search', text: 'hledat' }).appendTo(footer);

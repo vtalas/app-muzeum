@@ -1,3 +1,4 @@
+; Windows shortcuts 
 LWIN::return
 RWIN::return
 Control::return
@@ -39,13 +40,15 @@ F24::return
 ^!Delete::return
 !F4::return
 !Tab::return
-^w::return ; close tab
-^=::return ; zoom
-^-::return ; zoom
 
-
-^t::return
-^+t::return
-^NumpadAdd::return
-^NumpadSub::return
-^s::return
+; Chrome shortcuts
+^w::return ; prevent close tab
+^=::return ; prevent zoom
+^-::return ; prevent zoom
+^t::return ; prevent open new tab 
+^n::return ; prevent open new window
+^+n::return ; prevent open new window in private mode
+^+t::return ; prevet reopen tab
+^NumpadAdd::return ; prevent zoom 
+^NumpadSub::return ; prevent zoom
+^s::return ; prevent save

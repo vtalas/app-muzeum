@@ -19,8 +19,8 @@ const FooterView = Backbone.View.extend({
     render() {
         let footer = this.$el;
 
-        this.$prev = $('<a/>', { class: 'prev', text: '' }).appendTo(footer);
-        this.$next = $('<a/>', { class: 'next', text: '' }).appendTo(footer);
+        this.$prev = $('<a/>', { class: 'prev', text: 'předchozí' }).appendTo(footer);
+        this.$next = $('<a/>', { class: 'next', text: 'následující' }).appendTo(footer);
 
         this.$index = $('<a/>', { class: 'index', text: 'rejstřík' }).appendTo(footer);
         this.$search = $('<a/>', { class: 'search', text: 'hledat' }).appendTo(footer);
